@@ -1,0 +1,20 @@
+@(task: Form[TaskForm], id: Option[Long])(implicit messages: Messages)
+
+@import b3.vertical.fieldConstructor  // Declares a vertical field constructor as default
+
+@main(if(id.isEmpty) {
+        "Add Task"
+     } else {
+        "Update Task"
+     }) {
+
+
+	@b3.form(id match {
+        case Some(idVal) => routes.TaskController.update(idVal)
+        case None => routes.TaskController.addTask()
+    }) {
+        @b3.text(task("name"), '_label -> "Name")
+        @b3.text(task("description"), '_label -> "Description")
+        @b3.submit('class -> "btn btn-default"){ <span class="glyphicon glyphicon-ok"></span> Save }
+	}
+}

@@ -1,0 +1,7 @@
+@(task: Form[CreateTaskForm])(implicit messages: Messages)
+
+@import helper._
+
+@main("Add Task") {
+	@form(routes.TaskController.add)
+}

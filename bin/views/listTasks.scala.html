@@ -1,0 +1,29 @@
+@(tasks: Seq[Task])
+
+@import helper._
+
+@main("This is a Task list") {
+	<p>@tasks</p>
+	<a href="@routes.TaskController.addTaskForm()">Adicionar</a>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			@for(x <- tasks){
+				<tr>
+					<td>@x.id</td>
+					<td>@x.name</td>
+					<td>@x.description</td>
+					<td><a href="">Editar</a></td>
+					<td><button type="button">Remover</button></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
